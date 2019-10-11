@@ -26,7 +26,8 @@ public class LevelGenerator : MonoBehaviour
     public void GenerateRandomLevel(bool numberOfRoomsLock)
     {
         // Randomize all level poperties. Assuming the property is not locked.
-        if (numberOfRoomsLock == false) { numberOfRooms = Random.Range(5, 10); }
+        int tempNumberOfRooms = Random.Range(5, 10);
+        if (numberOfRoomsLock == false) { numberOfRooms = tempNumberOfRooms; }
 
         // Create the level.
         GenerateLevel();
