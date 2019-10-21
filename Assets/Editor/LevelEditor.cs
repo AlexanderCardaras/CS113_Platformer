@@ -4,14 +4,15 @@ using UnityEditor;
 [CustomEditor(typeof(LevelGenerator))]
 public class LevelScriptEditor : Editor
 {
+
     int seed;
     bool seedLock;
     bool numberOfRoomsLock;
-
+    
     public override void OnInspectorGUI()
     {
-        //DrawDefaultInspector();
-
+        // DrawDefaultInspector();
+        
         LevelGenerator levelGenerator = (LevelGenerator)target;
 
         // Randomize Level button
@@ -41,8 +42,11 @@ public class LevelScriptEditor : Editor
         numberOfRoomsLock = EditorGUILayout.Toggle("", numberOfRoomsLock);
         EditorGUILayout.EndHorizontal();
 
-    }
 
+        levelGenerator.tileSetObject = (GameObject)EditorGUILayout.ObjectField("Tile Set", levelGenerator.tileSetObject, typeof(GameObject), true);
+
+    }
+    
 
     /**
      *  sets global variable 'seed' to a random integer
