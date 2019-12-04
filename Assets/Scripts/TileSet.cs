@@ -4,7 +4,11 @@ using UnityEngine;
 
 public class TileSet : MonoBehaviour
 {
+    // Structure
     public GameObject backgroundTile;
-    public GameObject groundTile;
-    public GameObject pillar;
+    public GameObject groundSoloTile;
+    public GameObject pillarCenterTile;
+
+    // Interactables
+    public GameObject playerSpawnTile;
 }

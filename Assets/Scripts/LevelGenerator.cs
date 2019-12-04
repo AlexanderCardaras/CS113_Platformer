@@ -4,10 +4,9 @@ using UnityEngine;
 public class LevelGenerator : MonoBehaviour
 {
     public GameObject tileSetObject;
+    public int seed;
     public int numberOfRooms;
     public bool debug;
-    public bool seedLock;
-    public bool numberOfRoomsLock;
 
     private List<GameObject> rooms = new List<GameObject>();
     private int minNumberOfRooms = 5;
