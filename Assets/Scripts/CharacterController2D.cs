@@ -37,6 +37,7 @@ public class CharacterController2D : MonoBehaviour
     public BoolEvent OnFallEvent;
     private bool m_wasFalling = false;
 
+
     private void Awake()
     {
         m_Rigidbody2D = GetComponent<Rigidbody2D>();
@@ -49,6 +50,7 @@ public class CharacterController2D : MonoBehaviour
 
         if (OnFallEvent == null)
             OnFallEvent = new BoolEvent();
+
     }
 
     private void FixedUpdate()
@@ -127,8 +129,6 @@ public class CharacterController2D : MonoBehaviour
                 {
                     m_wasFalling = true;
                     OnFallEvent.Invoke(true);
-                    Debug.Log("Falling");
-                    Debug.Log(targetVelocity.y);
                 }
                     
             }
@@ -138,7 +138,6 @@ public class CharacterController2D : MonoBehaviour
                 {
                     m_wasFalling = false;
                     OnFallEvent.Invoke(false);
-                    Debug.Log("Stopped Falling");
                 }
             }
 
@@ -156,7 +155,7 @@ public class CharacterController2D : MonoBehaviour
             }
         }
         // If the player should jump...
-        if (m_Grounded && jump)
+        if (m_Grounded && jump && !loading_jump)
         {
             // Add a vertical force to the player.
             m_Grounded = false;
@@ -170,9 +169,11 @@ public class CharacterController2D : MonoBehaviour
     {
         loading_jump = true;
         yield return new WaitForSeconds(time);
-        loading_jump = false;
+        
         // Code to execute after the delay
         m_Rigidbody2D.AddForce(new Vector2(0f, m_JumpForce));
+        yield return new WaitForSeconds(time);
+        loading_jump = false;
     }
 
 
