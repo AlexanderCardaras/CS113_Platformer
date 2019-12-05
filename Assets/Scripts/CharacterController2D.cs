@@ -37,6 +37,7 @@ public class CharacterController2D : MonoBehaviour
     public BoolEvent OnFallEvent;
     private bool m_wasFalling = false;
 
+
     private void Awake()
     {
         m_Rigidbody2D = GetComponent<Rigidbody2D>();
@@ -49,6 +50,7 @@ public class CharacterController2D : MonoBehaviour
 
         if (OnFallEvent == null)
             OnFallEvent = new BoolEvent();
+
     }
 
     private void FixedUpdate()
@@ -127,8 +129,6 @@ public class CharacterController2D : MonoBehaviour
                 {
                     m_wasFalling = true;
                     OnFallEvent.Invoke(true);
-                    Debug.Log("Falling");
-                    Debug.Log(targetVelocity.y);
                 }
                     
             }
@@ -138,7 +138,6 @@ public class CharacterController2D : MonoBehaviour
                 {
                     m_wasFalling = false;
                     OnFallEvent.Invoke(false);
-                    Debug.Log("Stopped Falling");
                 }
             }
 
