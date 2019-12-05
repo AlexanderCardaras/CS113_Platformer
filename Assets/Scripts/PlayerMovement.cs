@@ -1,18 +1,20 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
 
     public CharacterController2D controller;
     public Animator animator;
+    public UnityEditor.Animations.AnimatorController neutral;
+    public UnityEditor.Animations.AnimatorController negative;
+    public UnityEditor.Animations.AnimatorController positive;
 
     public float runSpeed = 40f;
 
     float horizontalMove = 0f;
     bool jump = false;
     bool crouch = false;
+    int color = 0;
 
     // Update is called once per frame
     void Update()
@@ -38,6 +40,44 @@ public class PlayerMovement : MonoBehaviour
             crouch = false;
         }
 
+        // Mouse
+        if (Input.GetMouseButtonDown(0)) // Left Click
+        {
+
+        }
+        else if(Input.GetMouseButtonDown(1)) // Right Click
+        {
+
+        }
+
+        if (Input.GetButtonDown("Q"))
+        {
+            if(color == 1)
+            {
+                color = 0;
+                animator.runtimeAnimatorController = neutral;
+            }
+            else
+            {
+                color = 1;
+                animator.runtimeAnimatorController = negative;
+            }
+
+        }
+        else if (Input.GetButtonDown("E"))
+        {
+            if (color == 2)
+            {
+                color = 0;
+                animator.runtimeAnimatorController = neutral;
+            }
+            else
+            {
+                color = 2;
+                animator.runtimeAnimatorController = positive;
+            }
+        }
+
     }
 
     public void OnLanding()
@@ -54,6 +94,7 @@ public class PlayerMovement : MonoBehaviour
     {
         animator.SetBool("IsFalling", isFalling);
     }
+    
 
     void FixedUpdate()
     {
