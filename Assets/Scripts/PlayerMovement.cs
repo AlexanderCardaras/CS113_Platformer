@@ -9,6 +9,9 @@ public class PlayerMovement : MonoBehaviour
     public UnityEditor.Animations.AnimatorController negative;
     public UnityEditor.Animations.AnimatorController positive;
 
+    public GameObject red_projectile;
+    public GameObject blue_projectile;
+
     public float runSpeed = 40f;
 
     float horizontalMove = 0f;
@@ -43,11 +46,11 @@ public class PlayerMovement : MonoBehaviour
         // Mouse
         if (Input.GetMouseButtonDown(0)) // Left Click
         {
-
+            FireProjectile(blue_projectile);
         }
         else if(Input.GetMouseButtonDown(1)) // Right Click
         {
-
+            FireProjectile(red_projectile);
         }
 
         if (Input.GetButtonDown("Q"))
@@ -77,6 +80,19 @@ public class PlayerMovement : MonoBehaviour
                 animator.runtimeAnimatorController = positive;
             }
         }
+
+    }
+
+    public void FireProjectile(GameObject projectile)
+    {
+        Vector2 myPos = new Vector2(transform.position.x, transform.position.y);
+        Vector3 mousePos = Input.mousePosition;
+        mousePos.z = -Camera.main.transform.position.z; // select distance = 10 units from the camera
+        Vector2 target = Camera.main.ScreenToWorldPoint(mousePos);
+        Vector2 direction = target - myPos;
+        direction.Normalize();
+        Quaternion rotation = Quaternion.Euler(0, 0, Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg);
+        GameObject go = Instantiate(projectile, myPos, rotation);
 
     }
 
