@@ -23,8 +23,8 @@ public class ProjectileScript : MonoBehaviour
         {
             Vector3 forward = transform.TransformDirection(Vector3.right) * 10;
             Vector3 up = transform.TransformDirection(Vector3.up) * 1;
-            Vector3 ray_position1 = transform.position + (forward * 0.015f) + (up * 0.045f);
-            Vector3 ray_position2 = transform.position + (forward * 0.015f) - (up * 0.045f);
+            Vector3 ray_position1 = transform.position + (forward * 0.015f) + (up * 0.05f);
+            Vector3 ray_position2 = transform.position + (forward * 0.015f) - (up * 0.05f);
 
             Debug.DrawRay(ray_position1, forward, Color.blue);
             Debug.DrawRay(ray_position2, forward, Color.green);
