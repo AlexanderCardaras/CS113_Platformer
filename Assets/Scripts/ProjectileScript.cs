@@ -22,19 +22,29 @@ public class ProjectileScript : MonoBehaviour
         if(target_hit.collider == null)
         {
             Vector3 forward = transform.TransformDirection(Vector3.right) * 10;
-            Vector3 ray_position = transform.position + (forward * 1 * Time.deltaTime);
-            Debug.DrawRay(ray_position, forward, Color.green);
+            Vector3 up = transform.TransformDirection(Vector3.up) * 1;
+            Vector3 ray_position1 = transform.position + (forward * 0.015f) + (up * 0.045f);
+            Vector3 ray_position2 = transform.position + (forward * 0.015f) - (up * 0.045f);
 
-            // Cast a ray straight down.LayerMask mask = LayerMask.GetMask("Wall");
-            //RaycastHit2D hit = Physics2D.Raycast(ray_position, forward);
-            RaycastHit2D hit = Physics2D.Raycast(ray_position, forward, 10, LayerMask.GetMask("Ground"));
+            Debug.DrawRay(ray_position1, forward, Color.blue);
+            Debug.DrawRay(ray_position2, forward, Color.green);
 
+            RaycastHit2D hit1 = Physics2D.Raycast(ray_position1, forward, 10, LayerMask.GetMask("Ground"));
+            RaycastHit2D hit2 = Physics2D.Raycast(ray_position2, forward, 10, LayerMask.GetMask("Ground"));
 
             // If it hits something...
-            if (hit.collider != null)
+            if (hit1.collider != null)
             {
-                target_hit = hit;
-                Debug.Log(target_hit.transform.name + ": " + target_hit.normal);
+                target_hit = hit1;
+            }
+
+            // If it hits something...
+            if (hit2.collider != null)
+            {
+                if(hit2.distance < hit1.distance)
+                {
+                    target_hit = hit2;
+                }
             }
         }
         
@@ -48,19 +58,34 @@ public class ProjectileScript : MonoBehaviour
         }
         
     }
+
+    Vector2 Rotate(Vector2 aPoint, float aDegree)
+    {
+        float rad = aDegree * Mathf.Deg2Rad;
+        float s = Mathf.Sin(rad);
+        float c = Mathf.Cos(rad);
+        return new Vector2( aPoint.x * c - aPoint.y * s, aPoint.y * c + aPoint.x * s );
+    }
+
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.layer == LayerMask.NameToLayer("Ground"))
         {
             float x_rot = (-90 * target_hit.normal.x);
-            float y_rot = (90 * target_hit.normal.y * (target_hit.normal.y - 1));
+            float y_rot = (90 * target_hit.normal.y * (-target_hit.normal.y + 1));
+
 
             transform.eulerAngles = new Vector3(0, 0, x_rot + y_rot);
+
+            transform.rotation = Quaternion.FromToRotation(Vector3.left, Vector2.Perpendicular(target_hit.normal));
+            if (target_hit.normal.y == -1.0) { transform.Rotate(new Vector3(0, 0, 180)); }
+
             transform.position = target_hit.point;
             transform.Translate(Vector3.up * 0.25f);
             transform.parent = collision.transform;
             animator.SetBool("moving", false);
             moving = false;
+
 
             GetComponent<Rigidbody2D>().isKinematic = true;
         }
