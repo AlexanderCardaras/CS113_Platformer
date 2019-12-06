@@ -75,6 +75,7 @@ GameObject:
   - component: {fileID: 3447312973006786418}
   - component: {fileID: 3447312973006786419}
   - component: {fileID: 3447312973006786416}
+  - component: {fileID: 1895976501545799337}
   m_Layer: 9
   m_Name: Player
   m_TagString: Untagged
@@ -286,4 +287,21 @@ MonoBehaviour:
   neutral: {fileID: 9100000, guid: 25d286f39ff6cd04d9b26aafe6669726, type: 2}
   negative: {fileID: 9100000, guid: 0b4e1a2d7003d45aab079ac65ac31640, type: 2}
   positive: {fileID: 9100000, guid: 96805865dbbb247aca07ec341bb58232, type: 2}
+  red_projectile: {fileID: 0}
+  blue_projectile: {fileID: 0}
   runSpeed: 10
+--- !u!114 &1895976501545799337
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3447312973006786415}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c4ea40d0e9392af4598c8540955c72c3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  this_body: {fileID: 3447312973006786417}
+  this_transform: {fileID: 3447312973006786414}
+  charge: 0
