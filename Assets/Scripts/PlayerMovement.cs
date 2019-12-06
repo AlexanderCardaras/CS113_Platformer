@@ -1,13 +1,14 @@
-﻿using UnityEngine;
+﻿
+using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
 
     public CharacterController2D controller;
     public Animator animator;
-    public UnityEditor.Animations.AnimatorController neutral;
-    public UnityEditor.Animations.AnimatorController negative;
-    public UnityEditor.Animations.AnimatorController positive;
+    public RuntimeAnimatorController neutral;
+    public RuntimeAnimatorController negative;
+    public RuntimeAnimatorController positive;
     public magnet_interaction interaction;
 
     public GameObject red_projectile;
