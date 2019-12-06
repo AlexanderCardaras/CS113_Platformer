@@ -34,8 +34,11 @@ public class magnet_interaction : MonoBehaviour
             {
                 Vector2 force_vector = interaction.this_transform.position - this_transform.position;
                 Vector2 single_force = -force_vector.normalized * interaction.charge * charge / Mathf.Pow(force_vector.magnitude, 2);
-                this_body.AddForce(single_force);
-                debug_force += single_force;
+                if(!float.IsNaN(single_force.x) && !float.IsNaN(single_force.y))
+                {
+                    this_body.AddForce(single_force);
+                    debug_force += single_force;
+                }
             }
 
         }
