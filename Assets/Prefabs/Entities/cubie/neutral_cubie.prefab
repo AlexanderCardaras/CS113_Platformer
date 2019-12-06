@@ -13,6 +13,10 @@ GameObject:
   - component: {fileID: 8985411980897905400}
   - component: {fileID: 8985411980897905399}
   - component: {fileID: 8985411980897905398}
+  - component: {fileID: 1805768834361698217}
+  - component: {fileID: 6744147925894975906}
+  - component: {fileID: 7044047796857890370}
+  - component: {fileID: 900068788318816857}
   m_Layer: 10
   m_Name: neutral_cubie
   m_TagString: PressureValid
@@ -28,7 +32,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8985411980897905397}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 5.098, y: -3.235, z: 0}
+  m_LocalPosition: {x: 5.164, y: -3.211, z: 0}
   m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_Children: []
   m_Father: {fileID: 0}
@@ -145,3 +149,67 @@ MonoBehaviour:
   this_transform: {fileID: 8985411980897905402}
   charge: 0
   debug_force: {x: 0, y: 0}
+--- !u!58 &1805768834361698217
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8985411980897905397}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 1
+  m_UsedByComposite: 0
+  m_Offset: {x: 0.35, y: -0.35}
+  serializedVersion: 2
+  m_Radius: 0.05
+--- !u!58 &6744147925894975906
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8985411980897905397}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0.35, y: 0.42}
+  serializedVersion: 2
+  m_Radius: 0.05
+--- !u!58 &7044047796857890370
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8985411980897905397}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: -0.42, y: 0.42}
+  serializedVersion: 2
+  m_Radius: 0.05
+--- !u!58 &900068788318816857
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8985411980897905397}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: -0.42, y: -0.35}
+  serializedVersion: 2
+  m_Radius: 0.05
