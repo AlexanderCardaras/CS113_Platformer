@@ -167,4 +167,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   this_body: {fileID: 9187735514513826433}
   this_transform: {fileID: 1034534839487752211}
-  charge: -1
+  charge: -3
+  debug_force: {x: 0, y: 0}
