@@ -1,22 +1,16 @@
 ﻿#if UNITY_EDITOR
 using UnityEngine;
-using UnityEditor.Animations;
 
 public class PlayerMovement : MonoBehaviour
 {
 
     public CharacterController2D controller;
     public Animator animator;
-<<<<<<< HEAD
-    public AnimatorController neutral;
-    public AnimatorController negative;
-    public AnimatorController positive;
-=======
+
     public UnityEditor.Animations.AnimatorController neutral;
     public UnityEditor.Animations.AnimatorController negative;
     public UnityEditor.Animations.AnimatorController positive;
     public magnet_interaction interaction;
->>>>>>> 73907bb1f39090a4ec889391ffd13262a38159e8
 
     public GameObject red_projectile;
     public GameObject blue_projectile;
