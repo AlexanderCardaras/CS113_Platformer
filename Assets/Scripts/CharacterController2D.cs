@@ -1,8 +1,10 @@
 ﻿using UnityEngine;
 using UnityEngine.Events;
+using System.Collections;
 
 public class CharacterController2D : MonoBehaviour
 {
+    [SerializeField] private float m_JumpDelay = 0.3f;                          // Delay before jump force is applied
     [SerializeField] private float m_JumpForce = 400f;                          // Amount of force added when the player jumps.
     [Range(0, 1)] [SerializeField] private float m_CrouchSpeed = .36f;          // Amount of maxSpeed applied to crouching movement. 1 = 100%
     [Range(0, .3f)] [SerializeField] private float m_MovementSmoothing = .05f;  // How much to smooth out the movement
@@ -19,6 +21,8 @@ public class CharacterController2D : MonoBehaviour
     private bool m_FacingRight = true;  // For determining which way the player is currently facing.
     private Vector3 m_Velocity = Vector3.zero;
 
+    private bool loading_jump = false;
+
     [Header("Events")]
     [Space]
 
@@ -30,6 +34,10 @@ public class CharacterController2D : MonoBehaviour
     public BoolEvent OnCrouchEvent;
     private bool m_wasCrouching = false;
 
+    public BoolEvent OnFallEvent;
+    private bool m_wasFalling = false;
+
+
     private void Awake()
     {
         m_Rigidbody2D = GetComponent<Rigidbody2D>();
@@ -39,6 +47,10 @@ public class CharacterController2D : MonoBehaviour
 
         if (OnCrouchEvent == null)
             OnCrouchEvent = new BoolEvent();
+
+        if (OnFallEvent == null)
+            OnFallEvent = new BoolEvent();
+
     }
 
     private void FixedUpdate()
@@ -110,6 +122,24 @@ public class CharacterController2D : MonoBehaviour
             Vector3 targetVelocity = new Vector2(move * 10f, m_Rigidbody2D.velocity.y);
             // And then smoothing it out and applying it to the character
             m_Rigidbody2D.velocity = Vector3.SmoothDamp(m_Rigidbody2D.velocity, targetVelocity, ref m_Velocity, m_MovementSmoothing);
+            
+            if(targetVelocity.y < -0.5f)
+            {
+                if (!m_wasFalling)
+                {
+                    m_wasFalling = true;
+                    OnFallEvent.Invoke(true);
+                }
+                    
+            }
+            else
+            {
+                if (m_wasFalling)
+                {
+                    m_wasFalling = false;
+                    OnFallEvent.Invoke(false);
+                }
+            }
 
             // If the input is moving the player right and the player is facing left...
             if (move > 0 && !m_FacingRight)
@@ -125,12 +155,25 @@ public class CharacterController2D : MonoBehaviour
             }
         }
         // If the player should jump...
-        if (m_Grounded && jump)
+        if (m_Grounded && jump && !loading_jump)
         {
             // Add a vertical force to the player.
             m_Grounded = false;
-            m_Rigidbody2D.AddForce(new Vector2(0f, m_JumpForce));
+
+            StartCoroutine(ExecuteAfterTime(m_JumpDelay));
+            
         }
+    }
+
+    IEnumerator ExecuteAfterTime(float time)
+    {
+        loading_jump = true;
+        yield return new WaitForSeconds(time);
+        
+        // Code to execute after the delay
+        m_Rigidbody2D.AddForce(new Vector2(0f, m_JumpForce));
+        yield return new WaitForSeconds(time);
+        loading_jump = false;
     }
 
 
