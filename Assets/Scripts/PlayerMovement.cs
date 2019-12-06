@@ -90,13 +90,13 @@ public class PlayerMovement : MonoBehaviour
     {
         color = 1;
         animator.runtimeAnimatorController = negative;
-        interaction.charge = -1;
+        interaction.charge = -10;
     }
     private void set_positive()
     {
         color = 2;
         animator.runtimeAnimatorController = positive;
-        interaction.charge = 1;
+        interaction.charge = 10;
     }
 
     public void FireProjectile(GameObject projectile)
