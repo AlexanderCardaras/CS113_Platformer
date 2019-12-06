@@ -58,8 +58,11 @@ public class ProjectileScript : MonoBehaviour
             transform.eulerAngles = new Vector3(0, 0, x_rot + y_rot);
             transform.position = target_hit.point;
             transform.Translate(Vector3.up * 0.25f);
+            transform.parent = collision.transform;
             animator.SetBool("moving", false);
             moving = false;
+
+            GetComponent<Rigidbody2D>().isKinematic = true;
         }
     }
 
