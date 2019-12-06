@@ -1,13 +1,15 @@
-﻿using UnityEngine;
+﻿#if UNITY_EDITOR
+using UnityEngine;
+using UnityEditor.Animations;
 
 public class PlayerMovement : MonoBehaviour
 {
 
     public CharacterController2D controller;
     public Animator animator;
-    public UnityEditor.Animations.AnimatorController neutral;
-    public UnityEditor.Animations.AnimatorController negative;
-    public UnityEditor.Animations.AnimatorController positive;
+    public AnimatorController neutral;
+    public AnimatorController negative;
+    public AnimatorController positive;
 
     public GameObject red_projectile;
     public GameObject blue_projectile;
@@ -119,3 +121,4 @@ public class PlayerMovement : MonoBehaviour
         jump = false;
     }
 }
+#endif
