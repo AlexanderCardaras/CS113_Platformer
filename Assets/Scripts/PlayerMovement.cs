@@ -8,6 +8,7 @@ public class PlayerMovement : MonoBehaviour
     public UnityEditor.Animations.AnimatorController neutral;
     public UnityEditor.Animations.AnimatorController negative;
     public UnityEditor.Animations.AnimatorController positive;
+    public magnet_interaction interaction;
 
     public GameObject red_projectile;
     public GameObject blue_projectile;
@@ -57,13 +58,11 @@ public class PlayerMovement : MonoBehaviour
         {
             if(color == 1)
             {
-                color = 0;
-                animator.runtimeAnimatorController = neutral;
+                set_neutral();
             }
             else
             {
-                color = 1;
-                animator.runtimeAnimatorController = negative;
+                set_negative();
             }
 
         }
@@ -71,16 +70,33 @@ public class PlayerMovement : MonoBehaviour
         {
             if (color == 2)
             {
-                color = 0;
-                animator.runtimeAnimatorController = neutral;
+                set_neutral();
             }
             else
             {
-                color = 2;
-                animator.runtimeAnimatorController = positive;
+                set_positive();
             }
         }
 
+    }
+
+    private void set_neutral()
+    {
+        color = 0;
+        animator.runtimeAnimatorController = neutral;
+        interaction.charge = 0;
+    }
+    private void set_negative()
+    {
+        color = 1;
+        animator.runtimeAnimatorController = negative;
+        interaction.charge = -1;
+    }
+    private void set_positive()
+    {
+        color = 2;
+        animator.runtimeAnimatorController = positive;
+        interaction.charge = 1;
     }
 
     public void FireProjectile(GameObject projectile)
