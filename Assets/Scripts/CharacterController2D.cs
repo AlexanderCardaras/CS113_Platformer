@@ -119,7 +119,7 @@ public class CharacterController2D : MonoBehaviour
             }
             Vector2 targetVelocity;
             // Move the character by finding the target velocity
-            if (Mathf.Abs(m_Rigidbody2D.velocity.x - (move*10f)) > Mathf.Abs(move * 50f) && !m_Grounded)
+            if (Mathf.Abs(m_Rigidbody2D.velocity.x - (move*10f)) > Mathf.Abs(move * 10f) && !m_Grounded)
             {
                 targetVelocity = new Vector2(m_Rigidbody2D.velocity.x + (move * 10f), m_Rigidbody2D.velocity.y);
             }
