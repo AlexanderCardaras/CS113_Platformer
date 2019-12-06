@@ -1,4 +1,4 @@
-
+using UnityEngine.SceneManagement;
 using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
@@ -45,6 +45,11 @@ public class PlayerMovement : MonoBehaviour
         else if (Input.GetButtonUp("Crouch"))
         {
             crouch = false;
+        }
+        else if (Input.GetButtonDown("Reset"))
+        {
+            Debug.Log(SceneManager.GetActiveScene().ToString());
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         }
 
         // Mouse
@@ -129,7 +134,15 @@ public class PlayerMovement : MonoBehaviour
     {
         animator.SetBool("IsFalling", isFalling);
     }
-    
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.layer == LayerMask.NameToLayer("End"))
+        {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex+1);
+        }
+    }
+
 
     void FixedUpdate()
     {
