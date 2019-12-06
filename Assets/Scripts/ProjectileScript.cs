@@ -52,33 +52,9 @@ public class ProjectileScript : MonoBehaviour
     {
         if (collision.gameObject.layer == LayerMask.NameToLayer("Ground"))
         {
-            Debug.Log("Collision");
-
-            if(target_hit.normal.x == -1.0 && target_hit.normal.y == 0.0)
-            {
-                transform.eulerAngles = new Vector3(0, 0, 90);
-            }
-            else if (target_hit.normal.x == 0.0 && target_hit.normal.y == -1.0)
-            {
-                transform.eulerAngles = new Vector3(0, 0, 180);
-            }
-            else if(target_hit.normal.x == 0.0 && target_hit.normal.y == 1.0)
-            {
-                transform.eulerAngles = new Vector3(0, 0, 0);
-            }
-            else if (target_hit.normal.x == 1.0 && target_hit.normal.y == 0.0)
-            {
-                transform.eulerAngles = new Vector3(0, 0, -90);
-            }
-
-            //float rot = 90 * (target_hit.normal.y);
-            //transform.eulerAngles = new Vector3(0, 0, target_hit.normal.x*-90 + (target_hit.normal.y)*-90);
-            //transform.eulerAngles = new Vector3(0, 0, rot);
-
             float x_rot = (-90 * target_hit.normal.x);
-            float y_rot = (90 * target_hit.normal.y*(target_hit.normal.y-1));
-            Debug.Log("x"+x_rot);
-            Debug.Log("y"+y_rot);
+            float y_rot = (90 * target_hit.normal.y * (target_hit.normal.y - 1));
+
             transform.eulerAngles = new Vector3(0, 0, x_rot + y_rot);
             transform.position = target_hit.point;
             transform.Translate(Vector3.up * 0.25f);

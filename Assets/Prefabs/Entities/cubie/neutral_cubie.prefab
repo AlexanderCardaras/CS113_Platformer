@@ -120,7 +120,7 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 0.1
+  m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 1
@@ -144,3 +144,4 @@ MonoBehaviour:
   this_body: {fileID: 8985411980897905399}
   this_transform: {fileID: 8985411980897905402}
   charge: 0
+  debug_force: {x: 0, y: 0}

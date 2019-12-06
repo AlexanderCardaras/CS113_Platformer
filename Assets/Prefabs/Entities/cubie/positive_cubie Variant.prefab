@@ -10,7 +10,7 @@ PrefabInstance:
     - target: {fileID: 471552513964698203, guid: 0ed50f4e82a64ca409b7b339ad328865,
         type: 3}
       propertyPath: m_Name
-      value: positive_cubie
+      value: positive_cubie Variant
       objectReference: {fileID: 0}
     - target: {fileID: 471552513964698196, guid: 0ed50f4e82a64ca409b7b339ad328865,
         type: 3}
@@ -85,7 +85,7 @@ PrefabInstance:
     - target: {fileID: 471552513964698200, guid: 0ed50f4e82a64ca409b7b339ad328865,
         type: 3}
       propertyPath: charge
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0ed50f4e82a64ca409b7b339ad328865, type: 3}

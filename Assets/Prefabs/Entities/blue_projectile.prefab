@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 3371365980721092696}
   - component: {fileID: 2924639949564067562}
   - component: {fileID: 9187735514513826433}
+  - component: {fileID: 3697502025789991945}
   m_Layer: 11
   m_Name: blue_projectile
   m_TagString: Untagged
@@ -139,9 +140,9 @@ Rigidbody2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3551029254216519812}
-  m_BodyType: 0
+  m_BodyType: 1
   m_Simulated: 1
-  m_UseFullKinematicContacts: 0
+  m_UseFullKinematicContacts: 1
   m_UseAutoMass: 0
   m_Mass: 1
   m_LinearDrag: 0
@@ -152,3 +153,18 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &3697502025789991945
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3551029254216519812}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c4ea40d0e9392af4598c8540955c72c3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  this_body: {fileID: 9187735514513826433}
+  this_transform: {fileID: 1034534839487752211}
+  charge: -1
