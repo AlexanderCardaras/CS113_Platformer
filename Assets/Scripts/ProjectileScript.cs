@@ -74,12 +74,9 @@ public class ProjectileScript : MonoBehaviour
             float x_rot = (-90 * target_hit.normal.x);
             float y_rot = (90 * target_hit.normal.y * (-target_hit.normal.y + 1));
 
-
-            transform.eulerAngles = new Vector3(0, 0, x_rot + y_rot);
-
             transform.rotation = Quaternion.FromToRotation(Vector3.left, Vector2.Perpendicular(target_hit.normal));
             if (target_hit.normal.y == -1.0) { transform.Rotate(new Vector3(0, 0, 180)); }
-
+       
             transform.position = target_hit.point;
             transform.Translate(Vector3.up * 0.25f);
             transform.parent = collision.transform;
