@@ -7,9 +7,16 @@ public class PlayerMovement : MonoBehaviour
 
     public CharacterController2D controller;
     public Animator animator;
+<<<<<<< HEAD
     public AnimatorController neutral;
     public AnimatorController negative;
     public AnimatorController positive;
+=======
+    public UnityEditor.Animations.AnimatorController neutral;
+    public UnityEditor.Animations.AnimatorController negative;
+    public UnityEditor.Animations.AnimatorController positive;
+    public magnet_interaction interaction;
+>>>>>>> 73907bb1f39090a4ec889391ffd13262a38159e8
 
     public GameObject red_projectile;
     public GameObject blue_projectile;
@@ -59,13 +66,11 @@ public class PlayerMovement : MonoBehaviour
         {
             if(color == 1)
             {
-                color = 0;
-                animator.runtimeAnimatorController = neutral;
+                set_neutral();
             }
             else
             {
-                color = 1;
-                animator.runtimeAnimatorController = negative;
+                set_negative();
             }
 
         }
@@ -73,16 +78,33 @@ public class PlayerMovement : MonoBehaviour
         {
             if (color == 2)
             {
-                color = 0;
-                animator.runtimeAnimatorController = neutral;
+                set_neutral();
             }
             else
             {
-                color = 2;
-                animator.runtimeAnimatorController = positive;
+                set_positive();
             }
         }
 
+    }
+
+    private void set_neutral()
+    {
+        color = 0;
+        animator.runtimeAnimatorController = neutral;
+        interaction.charge = 0;
+    }
+    private void set_negative()
+    {
+        color = 1;
+        animator.runtimeAnimatorController = negative;
+        interaction.charge = -10;
+    }
+    private void set_positive()
+    {
+        color = 2;
+        animator.runtimeAnimatorController = positive;
+        interaction.charge = 10;
     }
 
     public void FireProjectile(GameObject projectile)
