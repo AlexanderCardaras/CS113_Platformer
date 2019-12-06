@@ -123,3 +123,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   valid_collision_count: 0
+  coll: {fileID: 2837370753309786727}
