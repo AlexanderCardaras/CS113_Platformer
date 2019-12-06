@@ -142,6 +142,14 @@ public class PlayerMovement : MonoBehaviour
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex+1);
         }
     }
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        Debug.Log(collision.gameObject.layer);
+        if (collision.gameObject.layer == LayerMask.NameToLayer("PlayBounds"))
+        {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        }
+    }
 
 
     void FixedUpdate()
